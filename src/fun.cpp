@@ -34,22 +34,26 @@ unsigned int faStr1(const char *str) {
 unsigned int faStr2(const char *str) {
     unsigned int count = 0;
     bool isWordStart = true;
-    bool validWord = true;
-
+    bool validWord = false;
     while (*str) {
         if (isWordStart && std::isupper(static_cast<unsigned char>(*str))) {
-            validWord = true;     // Starting with an uppercase letter
-        } else if (!std::islower(static_cast<unsigned char>(*str))) {
-            validWord = false;
+            validWord = true;
+            isWordStart = false;
         }
-        if (std::isspace(static_cast<unsigned char>(*str))
-            || *(str + 1) == '\0') {
-            if (validWord && !isWordStart) {
+        else if (std::islower(static_cast<unsigned char>(*str))) {
+            if (!isWordStart && !validWord) {
+                validWord = false;
+            }
+        }
+        else if (std::isspace(static_cast<unsigned char>(*str)) || *(str + 1) == '\0') {
+            if (validWord) {
                 count++;
             }
             isWordStart = true;
-            validWord = true;
-        } else {
+            validWord = false;
+        } 
+        else {
+            validWord = false;
             isWordStart = false;
         }
         str++;
