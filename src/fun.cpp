@@ -7,28 +7,25 @@
 
 unsigned int faStr1(const char *str) {
     unsigned int count = 0;
-    const char* wordStart = nullptr;
     bool inWord = false;
-    // Проходим по всей строке
+    bool hasDigit = false;
     while (*str != '\0') {
         if (std::isalpha(static_cast<unsigned char>(*str))) {
             if (!inWord) {
-                wordStart = str;
                 inWord = true;
             }
         } else if (std::isdigit(static_cast<unsigned char>(*str))) {
-            wordStart = nullptr;
-            inWord = false;
-        } else if (inWord) {
-            if (wordStart) {
+            hasDigit = true;
+        } else {
+            if (inWord && !hasDigit) {
                 count++;
             }
             inWord = false;
+            hasDigit = false;
         }
-        ++str;
+        str++;
     }
-    // Проверяем, если последнее слово не заканчивается на пробел
-    if (inWord && wordStart) {
+    if (inWord && !hasDigit) {
         count++;
     }
     return count;
