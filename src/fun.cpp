@@ -39,8 +39,7 @@ unsigned int faStr2(const char *str) {
         if (isWordStart && std::isupper(static_cast<unsigned char>(*str))) {
             validWord = true;
             isWordStart = false;
-        }
-        else if (std::islower(static_cast<unsigned char>(*str))) {
+        } else if (std::islower(static_cast<unsigned char>(*str))) {
             if (!isWordStart && !validWord) {
                 validWord = false;
             }
@@ -52,8 +51,7 @@ unsigned int faStr2(const char *str) {
             }
             isWordStart = true;
             validWord = false;
-        }
-        else {
+        } else {
             validWord = false;
             isWordStart = false;
         }
