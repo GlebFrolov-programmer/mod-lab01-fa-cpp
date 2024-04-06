@@ -87,6 +87,6 @@ unsigned int faStr3(const char *str) {
         average = static_cast<float>(totalLength)/static_cast<float>(wordCount);
     } else {
         average = 0;
-    }    
+    }
     return (unsigned int)(average + 0.5);
 }
