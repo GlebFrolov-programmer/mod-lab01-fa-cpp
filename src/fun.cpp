@@ -9,10 +9,9 @@ unsigned int faStr1(const char *str) {
     unsigned int count = 0;
     const char* wordStart = nullptr;
     bool inWord = false;
-    
     // Проходим по всей строке
     while (*str != '\0') {
-        if (std::isalpha(static_cast<unsigned char>(*str))) { // Если буква
+        if (std::isalpha(static_cast<unsigned char>(*str))) {
             if (!inWord) {
                 wordStart = str;
                 inWord = true;
@@ -28,12 +27,10 @@ unsigned int faStr1(const char *str) {
         }
         ++str;
     }
-    
     // Проверяем, если последнее слово не заканчивается на пробел
     if (inWord && wordStart) {
         count++; 
     }
-
     return count;
 }
 
@@ -48,7 +45,7 @@ unsigned int faStr2(const char *str) {
         } else if (!std::islower(static_cast<unsigned char>(*str))) {
             validWord = false;
         }
-        if (std::isspace(static_cast<unsigned char>(*str)) || *(str + 1) == '\0') {
+        if (std::isspace(static_cast<unsigned char>(*str))||*(str + 1) == '\0'){
             if (validWord && !isWordStart) {
                 count++;
             }
@@ -59,7 +56,6 @@ unsigned int faStr2(const char *str) {
         }
         str++;
     }
-
     return count;
 }
 
@@ -67,7 +63,6 @@ unsigned int faStr3(const char *str) {
     unsigned int wordCount = 0;
     unsigned int totalLength = 0;
     unsigned int wordLength = 0;
-
     while (*str != '\0') {
         if (std::isalpha(static_cast<unsigned char>(*str))) {
             wordLength++;
@@ -85,9 +80,7 @@ unsigned int faStr3(const char *str) {
         wordCount++;
         totalLength += wordLength;
     }
-
     // Подсчитываем среднюю длину слова
     float average = wordCount > 0 ? (float)totalLength / (float)wordCount : 0;
-
     return (unsigned int)(average + 0.5);
 }
