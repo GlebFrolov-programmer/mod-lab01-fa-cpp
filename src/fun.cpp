@@ -29,7 +29,7 @@ unsigned int faStr1(const char *str) {
     }
     // Проверяем, если последнее слово не заканчивается на пробел
     if (inWord && wordStart) {
-        count++; 
+        count++;
     }
     return count;
 }
@@ -45,7 +45,8 @@ unsigned int faStr2(const char *str) {
         } else if (!std::islower(static_cast<unsigned char>(*str))) {
             validWord = false;
         }
-        if (std::isspace(static_cast<unsigned char>(*str)) || *(str + 1) == '\0') {
+        if (std::isspace(static_cast<unsigned char>(*str))
+            || *(str + 1) == '\0') {
             if (validWord && !isWordStart) {
                 count++;
             }
