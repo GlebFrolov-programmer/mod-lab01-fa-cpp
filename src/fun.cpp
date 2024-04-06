@@ -43,8 +43,7 @@ unsigned int faStr2(const char *str) {
             if (!isWordStart && !validWord) {
                 validWord = false;
             }
-        }
-        else if (std::isspace(static_cast<unsigned char>(*str))
+        } else if (std::isspace(static_cast<unsigned char>(*str))
             || *(str + 1) == '\0') {
             if (validWord) {
                 count++;
