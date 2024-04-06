@@ -82,6 +82,11 @@ unsigned int faStr3(const char *str) {
         totalLength += wordLength;
     }
     // Подсчитываем среднюю длину слова
-    float average = wordCount > 0 ? (float)totalLength / (float)wordCount : 0;
+    float average;
+    if (wordCount > 0) {
+        average = static_cast<float>(totalLength)/static_cast<float>(wordCount);
+    } else {
+        average = 0;
+    }    
     return (unsigned int)(average + 0.5);
 }
